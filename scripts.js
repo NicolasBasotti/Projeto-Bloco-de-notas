@@ -11,7 +11,7 @@ function cliqueBotao(){
     if (!texto)
         return
     else { 
-        arrayTarefas.push(texto)
+        arrayTarefas.push({texto, concluida: false})
         mostrarNaTela()
     }
 }
@@ -20,10 +20,11 @@ function mostrarNaTela(){
     let novaLista = ""
 
     arrayTarefas.forEach(( tarefa, indice) =>{
+        let tarefaConcluida = tarefa.concluida ? "concluida" : ""
 
         novaLista = novaLista + `
-        <li class="item-lista" >
-            <p class="item-tarefa" data-indice="${indice}">${tarefa}</p>
+        <li class="item-lista"  data-indice="${indice}">
+            <p class="item-tarefa ${tarefaConcluida}">${tarefa.texto}</p>
             <button class="button-item-tarefa botao-verde botao-hover button-check-item">✓</button>
             <button class="button-item-tarefa botao-vermelho botao-hover button-excluir-item">x</button>
         </li>
@@ -45,20 +46,16 @@ function excluirItem(){
 
 function clicarItem(event){
     let item = event.target.parentElement
+    let indiceTarefa = Number(item.dataset.indice)
 
     if (event.target.classList.contains("button-check-item")){
-        let tarefa = item.querySelector(".item-tarefa")
-        tarefa.style.backgroundColor = "rgb(128, 238, 128)"
-
+        arrayTarefas[indiceTarefa].concluida = !arrayTarefas[indiceTarefa].concluida
     } else if (event.target.classList.contains("button-excluir-item")){
-        let indiceTarefa = Number(item.dataset.indice)
         arrayTarefas.splice(indiceTarefa, 1)
-        mostrarNaTela()
-
     }
+    mostrarNaTela()
 }
     
-
 
 
 buttonAd.addEventListener("click", cliqueBotao)
