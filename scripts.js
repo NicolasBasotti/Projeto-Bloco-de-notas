@@ -23,10 +23,10 @@ function mostrarNaTela(){
         let tarefaConcluida = tarefa.concluida ? "concluida" : ""
 
         novaLista = novaLista + `
-        <li class="item-lista"  data-indice="${indice}">
-            <p class="item-tarefa ${tarefaConcluida}">${tarefa.texto}</p>
-            <button class="button-item-tarefa botao-verde botao-hover button-check-item">✓</button>
-            <button class="button-item-tarefa botao-vermelho botao-hover button-excluir-item">x</button>
+        <li class="item-lista ${tarefaConcluida}"  data-indice="${indice}">
+            <p class="item-tarefa ">${tarefa.texto}</p>
+            <button class="button-item-tarefa botao-hover button-check-item">✓</button>
+            <button class="button-item-tarefa botao-hover button-excluir-item">x</button>
         </li>
         `
     })
