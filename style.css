@@ -104,7 +104,7 @@ body{
     display:flex;
     gap: 5px;
     align-items: center;
-    width: 92%;
+    width: 90%;
     margin-top: 25px;
     margin-bottom: 20px;
 }
@@ -144,6 +144,12 @@ body{
     background: transparent;
     border: 1px solid #ff5f7a;
     color: #ff5f7a;
+}
+
+.button-editar-item{
+    background: transparent;
+    border: 1px solid #b38cff;
+    color: #b38cff;
 }
 
 .concluida{
