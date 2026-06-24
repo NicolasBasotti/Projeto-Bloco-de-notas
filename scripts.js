@@ -2,6 +2,9 @@ let input = document.getElementById("input-principal")
 let buttonAd = document.getElementById("botao-adicionar")
 let buttonEx = document.getElementById("botao-limpar")
 let listaCompleta = document.getElementById("tarefas")
+let modal = document.getElementById("modal")
+let textEditar = document.getElementById("editar-tarefa")
+
 
 let arrayTarefas = []
 
@@ -60,11 +63,15 @@ function clicarItem(event){
     } else if (event.target.classList.contains("button-excluir-item")){
         arrayTarefas.splice(indiceTarefa, 1)
         
+    }else if (event.target.classList.contains("button-editar-item")){
+        modal.showModal();
     }
 
     atualizaTarefasStorage(arrayTarefas)
     mostrarNaTela()
 }
+
+
     
 function atualizaTarefasStorage(arrayT){
     storage.setItem("tarefasLista", JSON.stringify(arrayT))
@@ -75,13 +82,24 @@ function clicarEnter(event){
         cliqueBotao()
 }
 
+function alteraTarefa(event){
+    if(event.target.classList.contains("button-cancelar")){
+        modal.close()
+        textEditar.value = "";
+    }
+   
+}
+
 buttonAd.addEventListener("click", cliqueBotao)
 
 buttonEx.addEventListener("click", limpaLista)
 
+
 listaCompleta.addEventListener("click", clicarItem)
 
 input.addEventListener("keydown", clicarEnter)
+
+modal.addEventListener("click", alteraTarefa)
 
 mostrarNaTela()
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     <title>Bloco de Notas</title>
 </head>
 <body>
@@ -23,7 +24,21 @@
 
             </ul> 
     </div>
-
+    <dialog id="modal">
+        <div class="modal-edit">
+                <div class="modal-header">
+                    <P>Editar tarefa</P>
+                </div>
+                <div class="modal-body">
+                    <textarea id="editar-tarefa" rows="1" placeholder=""></textarea> 
+                </div>
+                <div class="modal-footer">
+                    <button class="button-modal button-cancelar hover-modal">Cancelar</button>
+                    <button class="button-modal button-salvar hover-modal">Salvar</button>
+                </div>
+        </div>
+    </dialog>
+  
     <script src="scripts.js"></script>
 </body>
 </html>

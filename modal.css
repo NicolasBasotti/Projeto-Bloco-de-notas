@@ -1,0 +1,84 @@
+#modal{
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+
+.modal-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(500px, 90vw);
+    min-height: 250px;
+    background: #482864;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    width: 100%;
+    font-size: 25px;
+}
+
+.modal-body{
+    padding: 15px;
+    width: 91%;
+    border-radius: 20px;
+    background-color: #2a243869;
+}
+
+#editar-tarefa{
+    width: 100%;
+    height: auto;
+    padding: 10px 10px;
+    resize: none;
+    background: transparent;
+    border:#482864 solid;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.modal-footer{
+    height: 5vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 1%;
+}
+
+.button-modal{
+    width: 45%;
+    height: 80%;
+    border-radius: 20px;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.button-salvar{
+    background: #6d4aff;
+    color: white;
+}
+
+.button-cancelar{
+    background: #2a2438;
+    color: #ff5f7a;
+    border: 1px solid #ff5f7a;
+}
+
+.hover-modal:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+dialog::backdrop{
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+}
