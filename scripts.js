@@ -7,7 +7,7 @@ let textEditar = document.getElementById("editar-tarefa")
 
 
 let arrayTarefas = []
-
+let indiceAlterandoTarefa;
 let storage = localStorage;
 
 arrayTarefas = JSON.parse(storage.getItem("tarefasLista")) || []
@@ -19,7 +19,7 @@ function cliqueBotao(){
         return
 
     arrayTarefas.push({texto, concluida: false})
-    atualizaTarefasStorage(arrayTarefas)
+    atualizaTarefasStorage()
     mostrarNaTela()
     input.value = ""
     input.focus()
@@ -46,7 +46,7 @@ function mostrarNaTela(){
 
 function limpaLista(){
     arrayTarefas = []
-    atualizaTarefasStorage(arrayTarefas)
+    atualizaTarefasStorage()
     mostrarNaTela()
 }
 
@@ -62,19 +62,20 @@ function clicarItem(event){
         arrayTarefas[indiceTarefa].concluida = !arrayTarefas[indiceTarefa].concluida
     } else if (event.target.classList.contains("button-excluir-item")){
         arrayTarefas.splice(indiceTarefa, 1)
-        
     }else if (event.target.classList.contains("button-editar-item")){
+        textEditar.value = arrayTarefas[indiceTarefa].texto;
+        indiceAlterandoTarefa = indiceTarefa;
         modal.showModal();
     }
 
-    atualizaTarefasStorage(arrayTarefas)
+    atualizaTarefasStorage()
     mostrarNaTela()
 }
 
 
     
-function atualizaTarefasStorage(arrayT){
-    storage.setItem("tarefasLista", JSON.stringify(arrayT))
+function atualizaTarefasStorage(){
+    storage.setItem("tarefasLista", JSON.stringify(arrayTarefas))
 }
 
 function clicarEnter(event){
@@ -86,9 +87,15 @@ function alteraTarefa(event){
     if(event.target.classList.contains("button-cancelar")){
         modal.close()
         textEditar.value = "";
+    }else if(event.target.classList.contains("button-salvar")){
+        arrayTarefas[indiceAlterandoTarefa].texto = textEditar.value.trim();
+        atualizaTarefasStorage()
+        modal.close();
+        mostrarNaTela()
     }
-   
 }
+
+
 
 buttonAd.addEventListener("click", cliqueBotao)
 
