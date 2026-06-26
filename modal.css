@@ -1,3 +1,16 @@
+dialog:not([open]) {
+  display: none;
+}
+
+dialog{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 #modal{
     border: none;
     padding: 0;
@@ -19,9 +32,17 @@
 .modal-header{
     display: flex;
     justify-content: center;
-    padding: 15px;
+    align-items: center;
+    padding: 18px 20px;
     width: 100%;
-    font-size: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-header h2{
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
 }
 
 .modal-body{

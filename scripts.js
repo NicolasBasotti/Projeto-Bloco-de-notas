@@ -78,23 +78,29 @@ function atualizaTarefasStorage(){
     storage.setItem("tarefasLista", JSON.stringify(arrayTarefas))
 }
 
-function clicarEnter(event){
+function clicarEnter(event, acao){
     if (event.key === 'Enter')
-        cliqueBotao()
+        acao(event);
 }
 
-function alteraTarefa(event){
+function modalBotoes(){
     if(event.target.classList.contains("button-cancelar")){
         modal.close()
         textEditar.value = "";
     }else if(event.target.classList.contains("button-salvar")){
-        arrayTarefas[indiceAlterandoTarefa].texto = textEditar.value.trim();
-        atualizaTarefasStorage()
-        modal.close();
-        mostrarNaTela()
+        alteraTarefa(event);
     }
 }
 
+function alteraTarefa(event){
+    let novoTexto = textEditar.value.trim();
+    if (!novoTexto)
+        return
+    arrayTarefas[indiceAlterandoTarefa].texto = novoTexto
+    atualizaTarefasStorage()
+    modal.close();
+    mostrarNaTela()
+}
 
 
 buttonAd.addEventListener("click", cliqueBotao)
@@ -104,9 +110,12 @@ buttonEx.addEventListener("click", limpaLista)
 
 listaCompleta.addEventListener("click", clicarItem)
 
-input.addEventListener("keydown", clicarEnter)
+input.addEventListener("keydown", (event) =>clicarEnter(event, cliqueBotao))
 
-modal.addEventListener("click", alteraTarefa)
+textEditar.addEventListener("keydown", (event) => clicarEnter(event, alteraTarefa))
+
+modal.addEventListener("click", modalBotoes)
 
 mostrarNaTela()
+
 
