@@ -10,96 +10,119 @@ dialog{
     justify-content: center;
 }
 
-
-#modal{
+#modal {
     border: none;
     padding: 0;
     background: transparent;
 }
 
-.modal-edit{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: min(500px, 90vw);
-    min-height: 250px;
-    background: #482864;
-    border-radius: 10px;
-    border: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
 }
 
-.modal-header{
+/* Caixa do modal */
+.modal-edit {
+    display: flex;
+    flex-direction: column;
+    width: min(500px, 90vw);
+    background: #482864;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+        'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Cabeçalho */
+.modal-header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 18px 20px;
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
-.modal-header h2{
+.modal-header h2 {
+    margin: 0;
     color: #fff;
     font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: .04em;
 }
 
-.modal-body{
-    padding: 15px;
-    width: 91%;
-    border-radius: 20px;
-    background-color: #2a243869;
+/* Corpo */
+.modal-body {
+    padding: 20px;
 }
 
-#editar-tarefa{
+#editar-tarefa {
     width: 100%;
-    height: auto;
-    padding: 10px 10px;
+    min-height: 110px;
+
     resize: none;
-    background: transparent;
-    border:#482864 solid;
-    border-radius: 5px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #6d4aff;
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.05);
+
     color: #fff;
-}
+    font-size: 15px;
 
-.modal-footer{
-    height: 5vw;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    gap: 1%;
-}
-
-.button-modal{
-    width: 45%;
-    height: 80%;
-    border-radius: 20px;
-    border: none;
-    font-size: 17px;
-    font-weight: bold;
+    outline: none;
     transition: .2s;
 }
 
-.button-salvar{
+#editar-tarefa:focus {
+    border-color: #8f6cff;
+    box-shadow: 0 0 10px rgba(109, 74, 255, .3);
+}
+
+/* Rodapé */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    padding: 0 20px 20px;
+}
+
+/* Botões */
+.button-modal {
+    width: 140px;
+    height: 42px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.button-salvar {
     background: #6d4aff;
     color: white;
 }
 
-.button-cancelar{
-    background: #2a2438;
-    color: #ff5f7a;
+.button-salvar:hover {
+    background: #7b5cff;
+}
+
+.button-cancelar {
+    background: transparent;
     border: 1px solid #ff5f7a;
+    color: #ff5f7a;
 }
 
-.hover-modal:hover{
-    transform: scale(1.02);
+.button-cancelar:hover {
+    background: rgba(255,95,122,.12);
+}
+
+.button-modal:hover {
+    transform: translateY(-2px);
     cursor: pointer;
-}
-
-dialog::backdrop{
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(3px);
 }

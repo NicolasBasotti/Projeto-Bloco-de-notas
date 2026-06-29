@@ -114,6 +114,7 @@ input.addEventListener("keydown", (event) =>clicarEnter(event, cliqueBotao))
 
 textEditar.addEventListener("keydown", (event) => clicarEnter(event, alteraTarefa))
 
+
 modal.addEventListener("click", modalBotoes)
 
 mostrarNaTela()
